@@ -33,13 +33,13 @@ Run test suite by specifying filename.
 
 For example:
 
->$>  docker-compose run k6 run /src/tests/eformidling.js -e env=*** -e apimSubscriptionKey=***
+>$>  podman-compose run k6 run /src/tests/availability-check.js -e env=*** -e apimSubscriptionKey=***
 
 The comand consists of three sections
 
-`docker-compose run` to run the test in a docker container
+`podman-compose run` to run the test in a docker container
 
-`k6 run {path to test file}` pointing to the test file you want to run e.g. `/src/tests/eformidling.js`
+`k6 run {path to test file}` pointing to the test file you want to run e.g. `/src/tests/availability-check.js`
 
 
 `-e env=*** -e apimSubscriptionKey=***` all environment variables that should be included in the request.
