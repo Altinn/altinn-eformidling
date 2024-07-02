@@ -1,7 +1,7 @@
 /*
     Test script of platform notifications api with org token
     Command:
-    docker-compose run k6 run /src/tests/eformidling.js `
+    podman compose run k6 run /src/tests/eformidling.js `
     -e env=*** `
     -e subscriptionKey=*** `
 */
