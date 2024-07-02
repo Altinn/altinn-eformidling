@@ -1,7 +1,7 @@
 /*
-    Test script of platform notifications api with org token
+    Test script for failed shipment check in eformidling
     Command:
-    podman compose run k6 run /src/tests/eformidling.js `
+    podman compose run k6 run /src/tests/failed-shipment-check.js `
     -e env=*** `
     -e subscriptionKey=*** `
 */
