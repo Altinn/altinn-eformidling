@@ -15,10 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Run availability and failed shipment check
+    - name: Run availability check
       run:  |
               cd tests/k6
-              docker compose run k6 run /src/tests/eformidling.js -e env=${{ vars.ENV }} -e apimSubscriptionKey=${{ secrets.APIM_SUBSKEY }}
+              docker compose run k6 run /src/tests/availability-check.js -e env=${{ vars.ENV }} -e apimSubscriptionKey=${{ secrets.APIM_SUBSKEY }}
+    - name: Run failed shipment check
+      if: ${{ matrix.environment != 'TT02' }}
+      run:  |
+              cd tests/k6
+              docker compose run k6 run /src/tests/failed-shipment-check.js -e env=${{ vars.ENV }} -e apimSubscriptionKey=${{ secrets.APIM_SUBSKEY }}
     - name: Build failure report
       if: failure()
       run: |

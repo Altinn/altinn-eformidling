@@ -15,25 +15,7 @@ export const options = {
   },
 };
 
-// 01 - Check availability
-function TC01_CheckAvailability(){
-    var response, success;
-
-  response = integrationPointApi.GetAvailability();
-  success = check(response, {
-    "GET integration point availability. Status is 200 OK": (r) => r.status === 200,
-    "GET integration point availability. Response in 'UP'": (r) => r.body === 'UP',
-
-  });
-
-  addErrorCount(success);
-  if (!success) {
-    stopIterationOnFail(success);
-  }
-}
-
-// 02 - GET levetid utløpt instances
-function TC02_GetLevetidUtloptInstances() {
+export default function () {
   var response, success;
 
   response = integrationPointApi.GetLevetidUtloptLast20();
@@ -48,22 +30,7 @@ function TC02_GetLevetidUtloptInstances() {
 
   success = check(JSON.parse(response.body), {
     "GET levetid utløpt instances. No failed shipments": (object) =>
-    object.totalElements === 0
+      object.totalElements === 0,
   });
   addErrorCount(success);
-}
-
-
-/*
- * 01 - Check availability of integration point
- * 02 - GET levetid utløpt instances
- */
-export default function () {
-  try {
-    TC01_CheckAvailability();
-    TC02_GetLevetidUtloptInstances();
-  } catch (error) {
-    addErrorCount(false);
-    throw error;
-  }
 }
