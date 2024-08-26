@@ -16,7 +16,7 @@ export function GetLevetidUtloptLast20() {
   const now = new Date();
 
   const fromDateTime = new Date(now.getTime() - 20 * 60 * 1000).toISOString();
-  const toDateTime = new Date().toISOString()
+  const toDateTime = new Date().toISOString();
 
   var params = {
     "subscription-key": apimSubscriptionKey,
