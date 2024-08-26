@@ -11,7 +11,6 @@ export function addErrorCount(success) {
 }
 
 
-
 /**
  * Stops k6 iteration when success is false and prints test name with response code
  * @param {String} failReason The reason for stopping the tests
