@@ -16,7 +16,7 @@ export function GetLevetidUtloptLast20() {
   const now = new Date();
 
   const fromDateTime = new Date(now.getTime() - 20 * 60 * 1000).toISOString();
-  const toDateTime = new Date().toISOString();
+  const toDateTime = new Date().toISOString()
 
   var params = {
     "subscription-key": apimSubscriptionKey,
@@ -45,6 +45,27 @@ export function GetAvailability() {
     config.integrationPoint.availability +
     "?subscription-key=" +
     apimSubscriptionKey;
+
+  var response = http.get(endpoint);
+
+  return response;
+}
+
+export function GetConversation(messageId){
+  if (!apimSubscriptionKey) {
+    stopIterationOnFail(
+      "Required environment variable APIM subscription key (apimSubscriptionKey) was not provided",
+      false
+    );
+  }
+
+  var params = {
+    "subscription-key": apimSubscriptionKey,
+    messageId: messageId,
+  };
+
+  var endpoint =
+    config.integrationPoint.conversations + generateQueryParamString(params);
 
   var response = http.get(endpoint);
 

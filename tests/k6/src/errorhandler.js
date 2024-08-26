@@ -10,16 +10,15 @@ export function addErrorCount(success) {
   }
 }
 
+
+
 /**
  * Stops k6 iteration when success is false and prints test name with response code
- * @param {String} testName
- * @param {boolean} success
- * @param {JSON} res
+ * @param {String} failReason The reason for stopping the tests
+ * @param {boolean} success The result of a check
  */
-export function stopIterationOnFail(testName, success, res) {
-  if (!success && res != null) {
-    fail(testName + ": Response code: " + res.status + ". Response message: " + res.body);
-  } else if (!success) {
-    fail(testName);
+export function stopIterationOnFail(failReason, success) {
+  if (!success) {
+    fail(failReason);
   }
 }

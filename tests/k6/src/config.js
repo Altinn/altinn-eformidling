@@ -15,5 +15,6 @@ export var integrationPoint = {
   "https://platform." + baseUrl + "/eformidling/api/statuses/",
   availability:
   "https://platform." + baseUrl + "/eformidling/api/manage/availability/",
-
+  conversations:
+  "https://platform." + baseUrl + "/eformidling/api/conversations/",
 }
