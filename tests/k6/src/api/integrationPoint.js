@@ -50,3 +50,24 @@ export function GetAvailability() {
 
   return response;
 }
+
+export function GetConversation(messageId){
+  if (!apimSubscriptionKey) {
+    stopIterationOnFail(
+      "Required environment variable APIM subscription key (apimSubscriptionKey) was not provided",
+      false
+    );
+  }
+
+  var params = {
+    "subscription-key": apimSubscriptionKey,
+    messageId: messageId,
+  };
+
+  var endpoint =
+    config.integrationPoint.conversations + generateQueryParamString(params);
+
+  var response = http.get(endpoint);
+
+  return response;
+}

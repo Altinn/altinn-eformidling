@@ -28,6 +28,6 @@ export default function () {
 
   addErrorCount(success);
   if (!success) {
-    stopIterationOnFail(success);
+    stopIterationOnFail('GET integration point availability request failed', success);
   }
 }
