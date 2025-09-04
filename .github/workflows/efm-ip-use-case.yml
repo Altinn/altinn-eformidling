@@ -1,4 +1,6 @@
 name: Use case - TT02 & PROD
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
